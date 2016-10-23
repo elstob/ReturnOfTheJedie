@@ -1,0 +1,260 @@
+import Vue from 'vue'
+import awakenings from './assets/swdestinydb-json-data/set/AW.json'
+
+/* eslint-disable no-new */
+new Vue({
+    el: '#app',
+    data: {
+        selected_card: '01001',
+        sets: {
+            Awakenings: awakenings
+        },
+        active_cards: [],
+        elite_cards: [],
+        rolls: [],
+        side_cache: {},
+        face_map: {
+            'MD': 'Melee Damage',
+            'RD': 'Ranged Damage',
+            'Sh': 'Shield',
+            'R':  'Resource',
+            'Dr': 'Disrupt',
+            'Dc': 'Discard',
+            'F':  'Focus',
+            'Sp': 'Special',
+            '-':  'Blank'
+        },
+    },
+    computed: {
+
+        average_roll: function() {
+
+            var parsed;
+            var totals = {};
+            var average = {};
+
+            this.rolls.forEach(roll => {
+
+                parsed = this.totalRoll(roll);
+
+                Object.keys(parsed).forEach(side => {
+                    if (!totals[side]) {
+                        totals[side] = parsed[side];
+                    } else {
+                        totals[side] = totals[side] + parsed[side];
+                    }
+                })
+
+            });
+
+            Object.keys(totals).forEach(side => {
+                average[side] = (totals[side] / this.rolls.length).toFixed(3);
+            });
+
+
+            // Sort for consistency
+            average = Object.keys(average).sort().reduce((r, k) => (r[k] = average[k], r), {});
+
+            return average;
+
+        },
+
+        last_roll: function() {
+            var parsed = this.totalRoll(this.rolls[this.rolls.length - 1]);
+            return parsed;
+        }
+
+    },
+    methods: {
+
+        addCard: function(e) {
+
+            var chosen;
+
+            this.rolls = [];
+
+            while (!chosen) {
+
+                Object.keys(this.sets).forEach(set => {
+                    chosen = this.sets[set].find(card => card.code === this.selected_card);
+                });
+
+                if (!chosen) {
+                    chosen = 'failed';
+                }
+
+            }
+
+            if (chosen === 'failed') {
+                console.log('Unable to find card');
+                return;
+            }
+
+            chosen = Object.assign({}, chosen);
+
+            this.active_cards.push(chosen);
+
+        },
+
+        removeCard: function(code) {
+
+            var active_index = this.active_cards.indexOf(code);
+            var elite_index = this.elite_cards.indexOf(code);
+
+            this.rolls = [];
+            this.active_cards.splice(active_index, 1);
+
+            if (elite_index > -1) {
+                this.elite_cards.splice(elite_index, 1);
+            }
+
+        },
+
+        eliteOption: function(points) {
+
+            if (points && points.indexOf('/') > -1) {
+                return true;
+            }
+
+            return false;
+
+        },
+
+        toggleElite: function(code) {
+
+            var index = this.elite_cards.indexOf(code);
+
+            this.rolls = [];
+
+            if (index > -1) {
+                this.elite_cards.splice(index, 1);
+            } else {
+                this.elite_cards.push(code);
+            }
+
+        },
+
+        roll: function(count) {
+
+            while (count) {
+
+                var result = [];
+
+                this.active_cards.forEach(card => {
+
+                    var index = Math.floor(Math.random() * card.sides.length);
+                    var rolled = card.sides[index];
+                    result.push(this.parseSide(rolled, card));
+
+                    if (this.elite_cards.indexOf(card.code) > -1) {
+                        index = Math.floor(Math.random() * card.sides.length);
+                        rolled = card.sides[index];
+                        result.push(this.parseSide(rolled, card));
+                    }
+
+                });
+
+                this.rolls.push(result);
+
+                count = count - 1;
+
+            }
+
+        },
+
+        parseSide: function(side, card) {
+
+            var breakdown, value, modified, found;
+            var result = {};
+            var possibilities = ['MD', 'RD', 'Sh', 'R', 'Dr', 'Dc', 'F'];
+
+            // Handle Specials
+            if (side.includes('Sp')) {
+                result['Special ('+card.name+')'] = { value: 1 };
+                return result;
+            }
+
+            // Else check cache seen this side, no need to parse it again
+            if (this.side_cache[side]) {
+                return this.side_cache[side];
+            }
+
+            // Handle blanks and modified
+            if (side.includes('-')) {
+
+                if (side === '-') {
+                    result['-'] = { value: 1 };
+                    this.side_cache[side] = result;
+                    return result;
+                }
+
+                side = side.substring(1);
+                modified = true;
+
+            }
+
+            possibilities.forEach(face => {
+
+                if (side.includes(face) && !found) {
+
+                    found = true;
+
+                    breakdown = side.split(face);
+                    value = parseInt(breakdown[0]);
+                    result[face] = { value: value || 1 };
+
+                    if (breakdown.length === 2 && breakdown[1] !== "") {
+                        result[face]['cost'] = breakdown[1];
+                    }
+
+                    if (modified) {
+                        result[face]['modified'] = true;
+                    }
+
+                    this.side_cache[side] = result;
+
+                }
+
+            });
+
+            return result;
+
+        },
+
+        totalRoll: function(roll) {
+
+            var parsed = {};
+
+            roll.forEach(die => {
+
+                Object.keys(die).forEach(side => {
+
+                    var non_modified;
+
+                    // Modified dice need a non modified equivalent to count
+                    if (die[side].modified) {
+
+                        non_modified = roll.some(other_die => {other_die[side] && !other_die[side].modified});
+
+                        if (!non_modified) {
+                            return false;
+                        }
+
+                    }
+
+                    if (!parsed[side]) {
+                        parsed[side] = die[side].value;
+                    } else {
+                        parsed[side] = parsed[side] + die[side].value;
+                    }
+
+                });
+
+            });
+
+            return parsed;
+
+        }
+
+    }
+})
