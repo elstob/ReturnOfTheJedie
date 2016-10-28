@@ -70,6 +70,10 @@
                 <div>
                     <h3>Average</h3>
                     <table class="data">
+                        <tr v-for="(value, key) in average_roll">
+                            <td>{{ face_map[key] || key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
                     </table>
                 </div>
 
