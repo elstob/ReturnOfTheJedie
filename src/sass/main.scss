@@ -1,0 +1,148 @@
+body {
+    background: #F2F2F2;
+    color: #012840;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+a {
+    color: #1BAFBF;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+}
+
+#app {
+    margin: 0 auto;
+    width: 900px;
+}
+
+h1 {
+    font-weight: normal;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 10px;
+
+    &.controls {
+        text-align: center;
+    }
+
+}
+
+table {
+    background: white;
+    border: 1px solid #012840;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 100%;
+
+    td, th {
+        border: 1px solid #012840;
+        padding: 10px;
+
+        &.name {
+            white-space: nowrap;
+        }
+
+        &.side {
+            text-align: center;
+            width: 5%;
+        }
+
+        &.text {
+            font-family: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        &.elite {
+            white-space: nowrap;
+        }
+
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    &.data {
+
+        td {
+            width: 50%;
+        }
+
+    }
+
+}
+
+button,
+select {
+    background: #1BAFBF;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+}
+
+div.controls {
+    text-align: center;
+}
+
+.dice {
+    margin: 30px 0;
+
+    ol {
+        background: #CCC;
+        border-radius: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+
+        li {
+            background: darken(#1BAFBF, 5);
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px #000;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            height: 50px;
+            line-height: 45px;
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 50px;
+
+            >span {
+                color: white;
+                text-align: center;
+
+                span.cost {
+                    background: white;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    color: darken(#1BAFBF, 5);
+                    font-size: 12px;
+                    line-height: 12px;
+                    margin-left: -14px;
+                    text-align: center;
+                    padding: 5px;
+                    position: absolute;
+                        left: 50%;
+                        bottom: 0px;
+                    width: 16px;
+                }
+
+            }
+
+        }
+
+    }
+
+}

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import awakenings from './assets/swdestinydb-json-data/set/AW.json'
+import styles from './sass/main.scss'
 
 /* eslint-disable no-new */
 new Vue({
@@ -62,7 +63,7 @@ new Vue({
         last_roll: function() {
             var parsed = this.totalRoll(this.rolls[this.rolls.length - 1]);
             return parsed;
-        }
+        },
 
     },
     methods: {
@@ -98,10 +99,11 @@ new Vue({
 
         removeCard: function(code) {
 
-            var active_index = this.active_cards.indexOf(code);
-            var elite_index = this.elite_cards.indexOf(code);
+            var active_index = this.active_cards.findIndex(card => (card.code === code));
+            var elite_index = this.elite_cards.findIndex(card => (card.code === code));
 
             this.rolls = [];
+
             this.active_cards.splice(active_index, 1);
 
             if (elite_index > -1) {
@@ -234,7 +236,7 @@ new Vue({
                     // Modified dice need a non modified equivalent to count
                     if (die[side].modified) {
 
-                        non_modified = roll.some(other_die => {other_die[side] && !other_die[side].modified});
+                        non_modified = roll.some(other_die => {return other_die[side] && !other_die[side].modified});
 
                         if (!non_modified) {
                             return false;
@@ -254,7 +256,38 @@ new Vue({
 
             return parsed;
 
-        }
+        },
+
+        parsed_die: function(die) {
+
+            var side = Object.keys(die)[0];
+            var value = die[side].value;
+            var cost = die[side]['cost'];
+            var modified = die[side]['modified'];
+
+            if (side === '-') {
+                return '<span class="blank">-</span>';
+            }
+
+            if (side.includes('Special ')) {
+                return '<span class="special">&odot;</span>';
+            }
+
+            if (modified) {
+                modified = '+';
+            } else {
+                modified = '';
+            }
+
+            if (cost) {
+                cost = '<span class="cost">'+cost+'</span>';
+            } else {
+                cost = ''
+            }
+
+            return '<span class="die '+side+'">'+modified+value+side+cost+'</span>';
+
+        },
 
     }
 })
