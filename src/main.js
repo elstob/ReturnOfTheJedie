@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import awakenings from './assets/swdestinydb-json-data/set/AW.json'
 import styles from './sass/main.scss'
+import qs from 'qs'
 
 /* eslint-disable no-new */
 new Vue({
@@ -25,6 +26,22 @@ new Vue({
             'Sp': 'Special',
             '-':  'Blank'
         },
+    },
+    beforeMount: function() {
+
+        var query;
+
+        if (window.location.search !== '') {
+            query = qs.parse(window.location.search.substring(1));
+            if (query.cards) {
+                query.cards.forEach(card => {
+                    this.selected_card = card;
+                    this.addCard();
+                });
+            }
+        }
+
+
     },
     computed: {
 
