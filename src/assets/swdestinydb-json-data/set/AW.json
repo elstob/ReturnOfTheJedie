@@ -66,6 +66,39 @@
    },
    {
       "sides":[
+         "3RD",
+         "4RD",
+         "5RD1",
+         "2Sh",
+         "Sp",
+         "Sp"
+      ],
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"support",
+      "type_name":"Support",
+      "subtype_code":"vehicle",
+      "subtype_name":"Vehicle",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"villain",
+      "affiliation_name":"Villain",
+      "rarity_code":"L",
+      "rarity_name":"Legendary",
+      "position":5,
+      "code":"01005",
+      "name":"AT-ST",
+      "cost":6,
+      "text":"[special] - Discard a support from play.",
+      "deck_limit":2,
+      "flavor":"The All Terrain Scout Transport filled both support and reconnaissance roles in the Galactic Empire's war machine.",
+      "is_unique":false,
+      "has_die":true,
+      "url":"http:\/\/swdestinydb.com\/card\/01005",
+      "label":"AT-ST"
+   },
+   {
+      "sides":[
          "1RD",
          "2RD",
          "3RD1",
@@ -127,6 +160,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01008",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01008.png",
       "label":"F-11D Rifle"
    },
    {
@@ -483,6 +517,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01027",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01027.png",
       "label":"Admiral Ackbar"
    },
    {
@@ -552,6 +587,39 @@
       "url":"http:\/\/swdestinydb.com\/card\/01029",
       "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01029.png",
       "label":"Poe Dameron"
+   },
+   {
+      "sides":[
+         "1F",
+         "2Dr1",
+         "1R",
+         "Sp",
+         "Sp",
+         "-"
+      ],
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"upgrade",
+      "type_name":"Upgrade",
+      "subtype_code":"ability",
+      "subtype_name":"Ability",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"hero",
+      "affiliation_name":"Hero",
+      "rarity_code":"R",
+      "rarity_name":"Rare",
+      "position":33,
+      "code":"01033",
+      "name":"Scout",
+      "cost":1,
+      "text":"[special] Look at an opponent's hand and discard the cheapest card from it (you choose in the case of a tie).",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":true,
+      "url":"http:\/\/swdestinydb.com\/card\/01033",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01033.png",
+      "label":"Scout"
    },
    {
       "sides":[
@@ -744,9 +812,11 @@
       "cost":1,
       "text":"[special] - Reroll this die and one of your other dice.  Do not remove this die from your pool after resolving this ability.",
       "deck_limit":2,
+      "flavor":"\"Orange and white: one of a kind.\" <cite>Poe Dameron<\/cite>",
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01043",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01043.png",
       "label":"BB-8"
    },
    {
@@ -779,6 +849,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01044",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01044.png",
       "label":"Rey's Staff"
    },
    {
@@ -909,6 +980,37 @@
       "url":"http:\/\/swdestinydb.com\/card\/01049",
       "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01049.png",
       "label":"Millenium Falcon"
+   },
+   {
+      "sides":[
+         "1F",
+         "1Dr",
+         "2Dr",
+         "1Sh",
+         "Sp",
+         "-"
+      ],
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"support",
+      "type_name":"Support",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"neutral",
+      "affiliation_name":"Neutral",
+      "rarity_code":"R",
+      "rarity_name":"Rare",
+      "position":53,
+      "code":"01053",
+      "name":"Outpost",
+      "cost":2,
+      "text":"[special] - Resolve the battlefield ability as if you had just claimed it.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":true,
+      "url":"http:\/\/swdestinydb.com\/card\/01053",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01053.png",
+      "label":"Outpost"
    },
    {
       "sides":[
@@ -1070,6 +1172,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01059",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01059.png",
       "label":"Lightsaber"
    },
    {
@@ -1102,6 +1205,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01060",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01060.png",
       "label":"Mind Probe"
    },
    {
@@ -1257,6 +1361,52 @@
       "faction_name":"Command",
       "affiliation_code":"villain",
       "affiliation_name":"Villain",
+      "rarity_code":"C",
+      "rarity_name":"Common",
+      "position":71,
+      "code":"01071",
+      "name":"Occupation",
+      "cost":2,
+      "text":"Play only if you control the battlefield.\nForce an opponent to lose all of their resources.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":false,
+      "url":"http:\/\/swdestinydb.com\/card\/01071",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01071.png",
+      "label":"Occupation"
+   },
+   {
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"event",
+      "type_name":"Event",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"villain",
+      "affiliation_name":"Villain",
+      "rarity_code":"U",
+      "rarity_name":"Uncommon",
+      "position":74,
+      "code":"01074",
+      "name":"Tactical Mastery",
+      "cost":1,
+      "text":"Spot a Red character to take up to 2 additional actions.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":false,
+      "url":"http:\/\/swdestinydb.com\/card\/01074",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01074.png",
+      "label":"Tactical Mastery"
+   },
+   {
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"event",
+      "type_name":"Event",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"villain",
+      "affiliation_name":"Villain",
       "rarity_code":"U",
       "rarity_name":"Uncommon",
       "position":75,
@@ -1293,6 +1443,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01081",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01081.png",
       "label":"Enrage"
    },
    {
@@ -1361,6 +1512,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01089",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01089.png",
       "label":"Power of the Dark Side"
    },
    {
@@ -1471,6 +1623,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01103",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01103.png",
       "label":"Commando Raid"
    },
    {
@@ -1493,7 +1646,31 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01104",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01104.png",
       "label":"Defensive Position"
+   },
+   {
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"event",
+      "type_name":"Event",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"hero",
+      "affiliation_name":"Hero",
+      "rarity_code":"C",
+      "rarity_name":"Common",
+      "position":106,
+      "code":"01106",
+      "name":"Hit and Run",
+      "cost":0,
+      "text":"Ambush.\nActivate one of your Red characters.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":false,
+      "url":"http:\/\/swdestinydb.com\/card\/01106",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01106.png",
+      "label":"Hit and Run"
    },
    {
       "set_code":"AW",
@@ -1516,6 +1693,28 @@
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01117",
       "label":"Heroism"
+   },
+   {
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"event",
+      "type_name":"Event",
+      "faction_code":"blue",
+      "faction_name":"Force",
+      "affiliation_code":"hero",
+      "affiliation_name":"Hero",
+      "rarity_code":"C",
+      "rarity_name":"Common",
+      "position":118,
+      "code":"01118",
+      "name":"Noble Sacrifice",
+      "cost":0,
+      "text":"Defeat one of your Blue characters to exhaust a character.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":false,
+      "url":"http:\/\/swdestinydb.com\/card\/01118",
+      "label":"Noble Sacrifice"
    },
    {
       "set_code":"AW",
@@ -1581,6 +1780,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01124",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01124.png",
       "label":"Awakening"
    },
    {
@@ -1673,6 +1873,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01130",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01130.png",
       "label":"Let The Wookie Win"
    },
    {
@@ -1696,6 +1897,29 @@
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01134",
       "label":"Smuggling"
+   },
+   {
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"event",
+      "type_name":"Event",
+      "faction_code":"red",
+      "faction_name":"Command",
+      "affiliation_code":"neutral",
+      "affiliation_name":"Neutral",
+      "rarity_code":"C",
+      "rarity_name":"Common",
+      "position":143,
+      "code":"01143",
+      "name":"Squad Tactics",
+      "cost":0,
+      "text":"Activate any number of your non-unique characters at once.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":false,
+      "url":"http:\/\/swdestinydb.com\/card\/01143",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01143.png",
+      "label":"Squad Tactics"
    },
    {
       "set_code":"AW",
@@ -1739,6 +1963,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01146",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01146.png",
       "label":"Disturbance in the Force"
    },
    {
@@ -1963,7 +2188,7 @@
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01169",
       "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01169.png",
-      "label":"Imperial Armory (AW)"
+      "label":"Imperial Armory"
    },
    {
       "set_code":"AW",
@@ -2010,27 +2235,5 @@
       "url":"http:\/\/swdestinydb.com\/card\/01174",
       "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01174.png",
       "label":"Starship Graveyard"
-   },
-   {
-      "set_code":"AW",
-      "set_name":"Awakenings",
-      "type_code":"battlefield",
-      "type_name":"Battlefield",
-      "faction_code":"gray",
-      "faction_name":"Neutral",
-      "affiliation_code":"neutral",
-      "affiliation_name":"Neutral",
-      "rarity_code":"C",
-      "rarity_name":"Common",
-      "position":169,
-      "code":"0169",
-      "name":"Imperial Armory",
-      "subtitle":"Death Star",
-      "text":"<b>Claim<\/b> - Play an upgrade from your hand, decreasing its cost by 1.",
-      "deck_limit":1,
-      "is_unique":false,
-      "has_die":false,
-      "url":"http:\/\/swdestinydb.com\/card\/0169",
-      "label":"Imperial Armory (AW)"
    }
 ]

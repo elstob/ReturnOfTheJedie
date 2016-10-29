@@ -16,6 +16,7 @@
                         <option :value="card.code" v-for="card in cards" v-if="card.sides">{{ card.code }} {{card.name}}</option>
                     </optgroup>
                 </select>
+                &nbsp;
                 <a v-on:click="addCard">Add Card</a>
             </section>
 
