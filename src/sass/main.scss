@@ -1,12 +1,68 @@
+// Reset CSS
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 body {
-    background: #F2F2F2;
-    color: #012840;
-    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+// Actual CSS
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #020f2f;
+    background-image: url('http://0ab.f47.myftpupload.com/wp-content/uploads/2016/10/site-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: scroll;
+    color: #333;
+    font-family: 'Lato', sans-serif;
     font-size: 18px;
+    line-height: 24px;
 }
 
 a {
-    color: #1BAFBF;
+    color: #2ea3f2;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
@@ -14,18 +70,55 @@ a {
 
 }
 
-#app {
-    margin: 0 auto;
-    width: 900px;
+button:hover {
+    cursor: pointer;
 }
 
-h1 {
-    font-weight: normal;
+#app {
+    background: white;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    position: relative;
+    min-height: 800px;
+    text-align: center;
+    width: 1160px;
+
+    >footer {
+        background: #222;
+        color: white;
+        padding: 10px;
+        position: absolute;
+            bottom: 0;
+        width: 100%;
+
+        > p {
+            font-size: 11px;
+        }
+
+    }
+
+}
+
+h1, h3 {
+    font-family: 'Montserrat', helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
     text-align: center;
 }
 
+h3 {
+    font-size: 24px;
+    text-align: left;
+}
+
+em {
+    font-style: italic;
+}
+
 section {
-    margin-bottom: 10px;
+    margin: 0 40px 30px;
+    text-align: left;
 
     &.controls {
         text-align: center;
@@ -34,14 +127,21 @@ section {
 }
 
 table {
-    background: white;
+    background: #333;
     border: 1px solid #012840;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    color: white;
+    margin-bottom: 30px;
     width: 100%;
 
+    thead {
+        background: #222;
+    }
+
     td, th {
-        border: 1px solid #012840;
+        border: 1px solid #444;
+        font-family: 'Montserrat', helvetica, sans-serif;
+        font-size: 13px;
         padding: 10px;
 
         &.name {
@@ -49,6 +149,7 @@ table {
         }
 
         &.side {
+            vertical-align: middle;
             text-align: center;
             width: 5%;
         }
@@ -59,7 +160,9 @@ table {
             word-wrap: break-word;
         }
 
+        &.action,
         &.elite {
+            vertical-align: middle;
             white-space: nowrap;
         }
 
@@ -81,12 +184,15 @@ table {
 
 button,
 select {
-    background: #1BAFBF;
+    background: #2ea3f2;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
     color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', helvetica, sans-serif;
+    font-size: 18px;
     padding: 10px;
+    -webkit-appearance:none;
 }
 
 div.controls {
@@ -94,7 +200,7 @@ div.controls {
 }
 
 .dice {
-    margin: 30px 0;
+    margin: 30px 40px;
 
     ol {
         background: #CCC;
@@ -105,19 +211,20 @@ div.controls {
         text-align: center;
 
         li {
-            background: darken(#1BAFBF, 5);
+            background: darken(#2ea3f2, 5);
             border-radius: 5px;
             box-shadow: 0px 0px 4px #000;
             display: inline-block;
+            font-family: 'Montserrat', helvetica, sans-serif;
             font-size: 18px;
             font-weight: bold;
-            height: 50px;
-            line-height: 45px;
+            height: 60px;
+            line-height: 36px;
             margin: 10px;
             text-align: center;
             padding: 10px;
             position: relative;
-            width: 50px;
+            width: 60px;
 
             >span {
                 color: white;
@@ -127,10 +234,10 @@ div.controls {
                     background: white;
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
-                    color: darken(#1BAFBF, 5);
+                    color: darken(#2ea3f2, 5);
                     font-size: 12px;
-                    line-height: 12px;
-                    margin-left: -14px;
+                    line-height: 7px;
+                    margin-left: -7px;
                     text-align: center;
                     padding: 5px;
                     position: absolute;

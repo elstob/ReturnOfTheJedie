@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import awakenings from './assets/swdestinydb-json-data/set/AW.json'
 import styles from './sass/main.scss'
-import qs from 'qs'
 
 /* eslint-disable no-new */
 new Vue({
@@ -29,12 +28,12 @@ new Vue({
     },
     beforeMount: function() {
 
-        var query;
+        var cards;
 
-        if (window.location.search !== '') {
-            query = qs.parse(window.location.search.substring(1));
-            if (query.cards) {
-                query.cards.forEach(card => {
+        if (window.location.hash.substring(1) !== '') {
+            cards = window.location.hash.substring(1).split(':');
+            if (cards) {
+                cards.forEach(card => {
                     this.selected_card = card;
                     this.addCard();
                 });
@@ -112,6 +111,8 @@ new Vue({
 
             this.active_cards.push(chosen);
 
+            this.updateHash();
+
         },
 
         removeCard: function(code) {
@@ -126,6 +127,17 @@ new Vue({
             if (elite_index > -1) {
                 this.elite_cards.splice(elite_index, 1);
             }
+
+            this.updateHash();
+
+        },
+
+        updateHash: function() {
+
+            var cards = this.active_cards.map(card => card.code);
+            var hash = cards.join(':');
+
+            window.location.hash = hash;
 
         },
 
