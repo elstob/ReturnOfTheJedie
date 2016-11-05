@@ -222,13 +222,24 @@ div.controls {
             font-family: 'Montserrat', helvetica, sans-serif;
             font-size: 18px;
             font-weight: bold;
-            height: 60px;
-            line-height: 36px;
-            margin: 10px;
+            height: 80px;
+            line-height: 56px;
+            margin: 14px;
             text-align: center;
             padding: 10px;
             position: relative;
-            width: 60px;
+            width: 80px;
+
+            &:nth-child(1) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(2) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(3) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(4) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(5) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(6) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(7) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(8) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(9) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
+            &:nth-child(10) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
 
             >span {
                 color: white;
@@ -239,15 +250,15 @@ div.controls {
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
                     color: darken(#2ea3f2, 5);
-                    font-size: 12px;
-                    line-height: 7px;
-                    margin-left: -7px;
+                    font-size: 14px;
+                    line-height: 10px;
+                    margin-left: -12px;
                     text-align: center;
                     padding: 5px;
                     position: absolute;
                         left: 50%;
                         bottom: 0px;
-                    width: 16px;
+                    width: 24px;
                 }
 
             }
