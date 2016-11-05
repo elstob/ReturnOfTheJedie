@@ -126,6 +126,10 @@ section {
 
 }
 
+label {
+    cursor: pointer;
+}
+
 table {
     background: #333;
     border: 1px solid #012840;
@@ -143,13 +147,13 @@ table {
         font-family: 'Montserrat', helvetica, sans-serif;
         font-size: 13px;
         padding: 10px;
+        vertical-align: middle;
 
         &.name {
             white-space: nowrap;
         }
 
         &.side {
-            vertical-align: middle;
             text-align: center;
             width: 5%;
         }
@@ -162,7 +166,7 @@ table {
 
         &.action,
         &.elite {
-            vertical-align: middle;
+            text-align: center;
             white-space: nowrap;
         }
 

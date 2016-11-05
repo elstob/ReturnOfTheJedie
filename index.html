@@ -26,8 +26,8 @@
                     <thead>
                         <th>Name</th>
                         <th>Text</th>
-                        <th colspan="6">Sides</th>
-                        <th colspan="2">Actions</th>
+                        <th class="side" colspan="6">Sides</th>
+                        <th class="action" colspan="2">Actions</th>
                     </thead>
                     <tbody>
                       <tr v-for="card in active_cards">
@@ -35,7 +35,7 @@
                         <td class="text" v-html="card.text"></td>
                         <td class="side" v-for="side in card.sides">{{side}}</td>
                         <td class="action"><a @click="removeCard(card.code)">Remove</a></td>
-                        <td class="elite"><span v-if="eliteOption(card.points)">Elite? <input @click="toggleElite(card.code)" type="checkbox" /></span></td>
+                        <td class="elite" v-if="eliteOption(card.points)"><label v-bind:for="'elite-'+card.code">Elite?</label> <input v-bind:id="'elite-'+card.code" @click="toggleElite(card.code)" type="checkbox" /></td>
                       </tr>
                     </tbody>
                 </table>
