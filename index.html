@@ -13,9 +13,10 @@
     <body>
         <div id="app">
 
-            <h1>SW:Destiny - Dice Simulator</h1>
-
             <section class="controls">
+
+                <h1>SW:Destiny - Dice Simulator</h1>
+
                 <select id="cards" v-model="selected_card">
                     <optgroup v-for="(cards, set) in sets" :key="set" :label="set">
                         <option :value="card.code" v-for="card in cards" v-if="card.sides">{{ card.code }} {{card.name}}<template v-if="card.subtitle"> - {{ card.subtitle }}</template></option>
@@ -23,6 +24,7 @@
                 </select>
                 &nbsp;
                 <a v-on:click="addCard">Add Card</a>
+
             </section>
 
             <section v-if="active_cards.length">
@@ -68,22 +70,26 @@
 
                 <div>
                     <h3>Last Roll ({{this.rolls[this.rolls.length - 1].length}} dice)</h3>
-                    <table class="data">
-                        <tr v-for="(value, key) in last_roll">
-                            <td>{{ face_map[key] || key }}</td>
-                            <td>{{ value }}</td>
-                        </tr>
-                    </table>
+                    <div class="table-wrapper">
+                        <table class="data">
+                            <tr v-for="(value, key) in last_roll">
+                                <td>{{ face_map[key] || key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
                 <div>
                     <h3>Average</h3>
-                    <table class="data">
-                        <tr v-for="(value, key) in average_roll">
-                            <td>{{ face_map[key] || key }}</td>
-                            <td>{{ value }}</td>
-                        </tr>
-                    </table>
+                    <div class="table-wrapper">
+                        <table class="data">
+                            <tr v-for="(value, key) in average_roll">
+                                <td>{{ face_map[key] || key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
             </section>
