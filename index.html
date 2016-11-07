@@ -5,9 +5,9 @@
         <title>SW:Destiny - Dice Simulator</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-        <link rel="icon" href="/static/images/cropped-swdestiny-favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" href="/static/images/cropped-swdestiny-favicon-192x192.png" sizes="192x192" />
-        <link rel="apple-touch-icon-precomposed" href="/static/images/cropped-swdestiny-favicon-180x180.png" />
+        <link rel="icon" href="/static/assets/images/cropped-swdestiny-favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" href="/static/assets/images/cropped-swdestiny-favicon-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="/static/assets/images/cropped-swdestiny-favicon-180x180.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     </head>
     <body>
@@ -58,10 +58,10 @@
 
             </section>
 
-            <section v-if="rolls.length" class="dice">
+            <section v-if="rolls.length" @click="roll(1)" class="dice">
 
                 <ol>
-                    <li v-for="die in rolls[rolls.length - 1]" v-html="parsed_die(die)"></li>
+                    <li v-for="die in rolls[rolls.length - 1]" v-bind:class="getDieFaction(die)" v-html="parsed_die(die)"></li>
                 </ol>
 
             </section>
@@ -73,7 +73,7 @@
                     <div class="table-wrapper">
                         <table class="data">
                             <tr v-for="(value, key) in last_roll">
-                                <td>{{ face_map[key] || key }}</td>
+                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')">{{ key }}</template></td>
                                 <td>{{ value }}</td>
                             </tr>
                         </table>
@@ -85,7 +85,7 @@
                     <div class="table-wrapper">
                         <table class="data">
                             <tr v-for="(value, key) in average_roll">
-                                <td>{{ face_map[key] || key }}</td>
+                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')">{{ key }}</template></td>
                                 <td>{{ value }}</td>
                             </tr>
                         </table>

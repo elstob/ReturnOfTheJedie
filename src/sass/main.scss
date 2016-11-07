@@ -43,6 +43,14 @@ table {
     border-spacing: 0;
 }
 
+@import 'font';
+
+[class^="icon-"], [class*=" icon-"] {
+    cursor: help;
+    position: relative;
+        top: 4px;
+}
+
 // Actual CSS
 * {
     box-sizing: border-box;
@@ -53,7 +61,7 @@ body {
     background-image: url('http://0ab.f47.myftpupload.com/wp-content/uploads/2016/10/site-bg.jpg');
     background-repeat: no-repeat;
     background-position: top left;
-    background-attachment: scroll;
+    background-attachment: fixed;
     color: #333;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
@@ -186,6 +194,7 @@ table {
 
         &.text {
             font-family: inherit;
+            min-width: 100px;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
@@ -222,6 +231,7 @@ select {
     font-family: 'Montserrat', helvetica, sans-serif;
     font-size: 18px;
     padding: 10px;
+    position: relative;
     -webkit-appearance:none;
 
     @media screen and (max-width: $mobile) {
@@ -236,10 +246,14 @@ div.controls {
 }
 
 .dice {
+    background-image: url('http://0ab.f47.myftpupload.com/wp-content/uploads/2016/10/site-bg.jpg');
+    background-attachment: fixed;
+    border-radius: 10px;
     margin: 30px 40px;
+    user-select: none;
 
     ol {
-        background: #CCC;
+        background-color: rgba(0, 0, 0, 0.5);
         border-radius: 10px;
         list-style: none;
         margin: 0;
@@ -262,6 +276,33 @@ div.controls {
             position: relative;
             width: 80px;
 
+            &.Command {
+                background: darken(red, 5);
+                >span {
+                    span.cost {
+                        color: darken(red, 5);
+                    }
+                }
+            }
+
+            &.Rogue {
+                background: darken(yellow, 5);
+                >span {
+                    span.cost {
+                        color: darken(yellow, 5);
+                    }
+                }
+            }
+
+            &.Force {
+                background: darken(#2ea3f2, 10);
+                >span {
+                    span.cost {
+                        color: darken(#2ea3f2, 10);
+                    }
+                }
+            }
+
             &:nth-child(1) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
             &:nth-child(2) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
             &:nth-child(3) { $rotation: (random(100)-70)/10; transform: rotate($rotation+deg); }
@@ -276,16 +317,18 @@ div.controls {
             >span {
                 color: white;
                 text-align: center;
+                text-shadow: 1px 1px 1px #000;
 
                 span.cost {
                     background: white;
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
-                    color: darken(#2ea3f2, 5);
+                    box-shadow: 0px 0px 1px 1px #000;
                     font-size: 14px;
                     line-height: 10px;
                     margin-left: -12px;
                     text-align: center;
+                    text-shadow: none;
                     padding: 5px;
                     position: absolute;
                         left: 50%;

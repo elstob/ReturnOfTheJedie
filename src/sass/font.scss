@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'SWDESTINY-DICE-ICONS';
+  src:  url('../assets/fonts/SWDESTINY-DICE-ICONS.eot?v3kkoa');
+  src:  url('../assets/fonts/SWDESTINY-DICE-ICONS.eot?v3kkoa#iefix') format('embedded-opentype'),
+    url('../assets/fonts/SWDESTINY-DICE-ICONS.ttf?v3kkoa') format('truetype'),
+    url('../assets/fonts/SWDESTINY-DICE-ICONS.woff?v3kkoa') format('woff'),
+    url('../assets/fonts/SWDESTINY-DICE-ICONS.svg?v3kkoa#SWDESTINY-DICE-ICONS') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'SWDESTINY-DICE-ICONS' !important;
+  font-size: 140%;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Awakenings:before {
+  content: "\e900";
+}
+.icon-blank:before {
+  content: "\e901";
+}
+.icon-discard:before {
+  content: "\e902";
+}
+.icon-disrupt:before {
+  content: "\e903";
+}
+.icon-focus:before {
+  content: "\e904";
+}
+.icon-melee-damage:before {
+  content: "\e905";
+}
+.icon-ranged-damage:before {
+  content: "\e906";
+}
+.icon-resource:before {
+  content: "\e907";
+}
+.icon-shield:before {
+  content: "\e908";
+}
+.icon-special:before {
+  content: "\e909";
+}
+

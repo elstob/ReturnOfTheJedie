@@ -2,6 +2,18 @@ import Vue from 'vue'
 import awakenings from './assets/swdestinydb-json-data/set/AW.json'
 import styles from './sass/main.scss'
 
+var FACES = {
+    'MD': 'Melee Damage',
+    'RD': 'Ranged Damage',
+    'Sh': 'Shield',
+    'R':  'Resource',
+    'Dr': 'Disrupt',
+    'Dc': 'Discard',
+    'F':  'Focus',
+    'Sp': 'Special',
+    '-':  'Blank'
+};
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
@@ -12,19 +24,7 @@ new Vue({
         },
         active_cards: [],
         elite_cards: [],
-        rolls: [],
-        side_cache: {},
-        face_map: {
-            'MD': 'Melee Damage',
-            'RD': 'Ranged Damage',
-            'Sh': 'Shield',
-            'R':  'Resource',
-            'Dr': 'Disrupt',
-            'Dc': 'Discard',
-            'F':  'Focus',
-            'Sp': 'Special',
-            '-':  'Blank'
-        },
+        rolls: []
     },
     beforeMount: function() {
 
@@ -198,24 +198,19 @@ new Vue({
             var breakdown, value, modified, found;
             var result = {};
             var possibilities = ['MD', 'RD', 'Sh', 'R', 'Dr', 'Dc', 'F'];
+            var faction = card.faction_name.toString();
 
             // Handle Specials
             if (side.includes('Sp')) {
-                result['Special ('+card.name+')'] = { value: 1 };
+                result['Special ('+card.name+')'] = { value: 1, faction_name: faction };
                 return result;
-            }
-
-            // Else check cache seen this side, no need to parse it again
-            if (this.side_cache[side]) {
-                return this.side_cache[side];
             }
 
             // Handle blanks and modified
             if (side.includes('-')) {
 
                 if (side === '-') {
-                    result['-'] = { value: 1 };
-                    this.side_cache[side] = result;
+                    result['-'] = { value: 1, faction_name: faction };
                     return result;
                 }
 
@@ -242,7 +237,7 @@ new Vue({
                         result[face]['modified'] = true;
                     }
 
-                    this.side_cache[side] = result;
+                    result[face]['faction_name'] = faction;
 
                 }
 
@@ -287,20 +282,19 @@ new Vue({
 
         },
 
+        getDieFaction: function(die) {
+            var side = Object.keys(die)[0];
+            return die[side]['faction_name'];
+        },
+
         parsed_die: function(die) {
 
             var side = Object.keys(die)[0];
             var value = die[side].value;
             var cost = die[side]['cost'];
             var modified = die[side]['modified'];
-
-            if (side === '-') {
-                return '<span class="blank">-</span>';
-            }
-
-            if (side.includes('Special ')) {
-                return '<span class="special">&odot;</span>';
-            }
+            var icon = this.icon(side);
+            var faction = die[side]['faction_name'];
 
             if (modified) {
                 modified = '+';
@@ -311,12 +305,32 @@ new Vue({
             if (cost) {
                 cost = '<span class="cost">'+cost+'</span>';
             } else {
-                cost = ''
+                cost = '';
             }
 
-            return '<span class="die '+side+'">'+modified+value+side+cost+'</span>';
+            if ((side === '-') || (side.includes('Special'))) {
+                value = '';
+            }
+
+            return `<span class="die ${side}">${modified}${value}${icon}${cost}</span>`;
 
         },
+
+        icon: function(key) {
+
+            var text, icon;
+
+            if (key.includes('Special')) {
+                key = 'Sp';
+            };
+
+            text = FACES[key];
+
+            icon = 'icon-'+text.replace(' ', '-').toLowerCase();
+
+            return `<span class="icon ${icon}" title="${text}"></span>`;
+
+        }
 
     }
 })

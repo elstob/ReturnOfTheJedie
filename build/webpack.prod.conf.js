@@ -76,7 +76,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunks: ['vendor']
     }),
     new CopyWebpackPlugin([
-      {from: 'src/assets/images', to: 'static/images' }
+      {from: 'src/assets/images', to: 'static/assets/images' },
+      {from: 'src/assets/fonts', to: 'static/assets/fonts' }
     ]),
   ]
 })
