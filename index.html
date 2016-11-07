@@ -8,7 +8,7 @@
         <link rel="icon" href="/static/images/cropped-swdestiny-favicon-32x32.png" sizes="32x32" />
         <link rel="icon" href="/static/images/cropped-swdestiny-favicon-192x192.png" sizes="192x192" />
         <link rel="apple-touch-icon-precomposed" href="/static/images/cropped-swdestiny-favicon-180x180.png" />
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     </head>
     <body>
         <div id="app">
@@ -26,23 +26,26 @@
             </section>
 
             <section v-if="active_cards.length">
-                <table>
-                    <thead>
-                        <th>Name</th>
-                        <th>Text</th>
-                        <th class="side" colspan="6">Sides</th>
-                        <th class="action" colspan="2">Actions</th>
-                    </thead>
-                    <tbody>
-                      <tr v-for="card in active_cards">
-                        <td class="name">{{ card.name }}<em v-if="card.subtitle"><br />{{ card.subtitle }}</em></td>
-                        <td class="text" v-html="card.text"></td>
-                        <td class="side" v-for="side in card.sides">{{side}}</td>
-                        <td class="action"><a @click="removeCard(card.code)">Remove</a></td>
-                        <td class="elite" v-if="eliteOption(card.points)"><label v-bind:for="'elite-'+card.code">Elite?</label> <input v-bind:id="'elite-'+card.code" @click="toggleElite(card.code)" type="checkbox" /></td>
-                      </tr>
-                    </tbody>
-                </table>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Text</th>
+                            <th class="side" colspan="6">Sides</th>
+                            <th class="action" colspan="2">Actions</th>
+                        </thead>
+                        <tbody>
+                          <tr v-for="card in active_cards">
+                            <td class="name">{{ card.name }}<em v-if="card.subtitle"><br />{{ card.subtitle }}</em></td>
+                            <td class="text" v-html="card.text"></td>
+                            <td class="side" v-for="side in card.sides">{{side}}</td>
+                            <td class="action"><a @click="removeCard(card.code)">Remove</a></td>
+                            <td class="elite" v-if="eliteOption(card.points)"><label v-bind:for="'elite-'+card.code">Elite?</label> <input v-bind:id="'elite-'+card.code" @click="toggleElite(card.code)" type="checkbox" /></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="controls">
                     <button @click="roll(1)">Roll Dice</button>

@@ -74,6 +74,8 @@ button:hover {
     cursor: pointer;
 }
 
+$mobile: 1000px;
+
 #app {
     background: white;
     margin: 0 auto;
@@ -82,6 +84,11 @@ button:hover {
     min-height: 800px;
     text-align: center;
     width: 1160px;
+
+    @media screen and (max-width: $mobile) {
+        padding: 20px 0 80px;
+        width: 100%;
+    }
 
     >footer {
         background: #222;
@@ -120,6 +127,10 @@ section {
     margin: 0 40px 30px;
     text-align: left;
 
+    @media screen and (max-width: $mobile) {
+        margin: 0 10px 30px;
+    }
+
     &.controls {
         text-align: center;
     }
@@ -128,6 +139,13 @@ section {
 
 label {
     cursor: pointer;
+}
+
+div.table-wrapper {
+    @media screen and (max-width: $mobile) {
+        overflow: auto;
+        width: 100%;
+    }
 }
 
 table {
@@ -197,6 +215,12 @@ select {
     font-size: 18px;
     padding: 10px;
     -webkit-appearance:none;
+
+    @media screen and (max-width: $mobile) {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
 }
 
 div.controls {
