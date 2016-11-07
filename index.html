@@ -73,7 +73,7 @@
                     <div class="table-wrapper">
                         <table class="data">
                             <tr v-for="(value, key) in last_roll">
-                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')">{{ key }}</template></td>
+                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
                                 <td>{{ value }}</td>
                             </tr>
                         </table>
@@ -85,7 +85,7 @@
                     <div class="table-wrapper">
                         <table class="data">
                             <tr v-for="(value, key) in average_roll">
-                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')">{{ key }}</template></td>
+                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
                                 <td>{{ value }}</td>
                             </tr>
                         </table>
