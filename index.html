@@ -38,12 +38,12 @@
                             <th class="action" colspan="2">Actions</th>
                         </thead>
                         <tbody>
-                          <tr v-for="card in active_cards">
+                          <tr v-for="(card, slot) in active_cards">
                             <td class="name">{{ card.name }}<em v-if="card.subtitle"><br />{{ card.subtitle }}</em></td>
                             <td class="text" v-html="card.text"></td>
                             <td class="side" v-for="side in card.sides">{{side}}</td>
                             <td class="action"><a @click="removeCard(card.code)">Remove</a></td>
-                            <td class="elite" v-if="eliteOption(card.points)"><label v-bind:for="'elite-'+card.code">Elite?</label> <input v-bind:id="'elite-'+card.code" @click="toggleElite(card.code)" type="checkbox" /></td>
+                            <td class="elite" v-if="eliteOption(card.points)"><label v-bind:for="'elite-'+card.code">Elite?</label> <input v-bind:id="'elite-'+card.code" @click="toggleElite(slot)" type="checkbox" /></td>
                           </tr>
                         </tbody>
                     </table>

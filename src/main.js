@@ -23,7 +23,6 @@ new Vue({
             Awakenings: awakenings
         },
         active_cards: [],
-        elite_cards: [],
         rolls: []
     },
     beforeMount: function() {
@@ -118,15 +117,10 @@ new Vue({
         removeCard: function(code) {
 
             var active_index = this.active_cards.findIndex(card => (card.code === code));
-            var elite_index = this.elite_cards.findIndex(card => (card.code === code));
 
             this.rolls = [];
 
             this.active_cards.splice(active_index, 1);
-
-            if (elite_index > -1) {
-                this.elite_cards.splice(elite_index, 1);
-            }
 
             this.updateHash();
 
@@ -151,16 +145,16 @@ new Vue({
 
         },
 
-        toggleElite: function(code) {
+        toggleElite: function(slot) {
 
-            var index = this.elite_cards.indexOf(code);
+            var card = this.active_cards[slot];
 
             this.rolls = [];
 
-            if (index > -1) {
-                this.elite_cards.splice(index, 1);
+            if (!card.is_elite) {
+                card.is_elite = true;
             } else {
-                this.elite_cards.push(code);
+                card.is_elite = false;
             }
 
         },
@@ -177,7 +171,7 @@ new Vue({
                     var rolled = card.sides[index];
                     result.push(this.parseSide(rolled, card));
 
-                    if (this.elite_cards.indexOf(card.code) > -1) {
+                    if (card.is_elite) {
                         index = Math.floor(Math.random() * card.sides.length);
                         rolled = card.sides[index];
                         result.push(this.parseSide(rolled, card));
