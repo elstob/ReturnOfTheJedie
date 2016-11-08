@@ -39,7 +39,6 @@ new Vue({
             }
         }
 
-
     },
     computed: {
 
@@ -281,7 +280,7 @@ new Vue({
             return die[side]['faction_name'];
         },
 
-        parsed_die: function(die) {
+        parsedDie: function(die) {
 
             var side = Object.keys(die)[0];
             var value = die[side].value;
@@ -324,7 +323,24 @@ new Vue({
 
             return `<span class="icon ${icon}" title="${text}"></span>`;
 
-        }
+        },
+
+        niceSide: function(side) {
+
+            var nice_side, matched, sorted_faces;
+
+            sorted_faces = Object.keys(FACES).sort((a, b) => { return a.length - b.length });
+
+            sorted_faces.forEach(face => {
+                matched = false;
+                if (side.includes(face) && !matched) {
+                    nice_side = side.replace(face, this.icon(face));
+                    matched = true;
+                }
+            });
+            return nice_side;
+
+        },
 
     }
 })
