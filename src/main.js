@@ -338,6 +338,11 @@ new Vue({
                     matched = true;
                 }
             });
+
+            if (nice_side[0] === '-') {
+                nice_side = nice_side.replace('-', '+');
+            }
+
             return nice_side;
 
         },
