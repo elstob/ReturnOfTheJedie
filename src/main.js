@@ -23,7 +23,8 @@ new Vue({
             Awakenings: awakenings
         },
         active_cards: [],
-        rolls: []
+        rolls: [],
+        sorted_faces: Object.keys(FACES).sort((a, b) => { return a.length - b.length })
     },
     beforeMount: function() {
 
@@ -329,19 +330,20 @@ new Vue({
 
             var nice_side, matched, sorted_faces;
 
-            sorted_faces = Object.keys(FACES).sort((a, b) => { return a.length - b.length });
-
-            sorted_faces.forEach(face => {
+            this.sorted_faces.forEach(face => {
                 matched = false;
                 if (side.includes(face) && !matched) {
+
+                    if (side !== '-' && side[0] === '-') {
+                        // Fix modifiers
+                        side = side.replace('-', '+');
+                    }
+
                     nice_side = side.replace(face, this.icon(face));
                     matched = true;
+
                 }
             });
-
-            if (nice_side[0] === '-') {
-                nice_side = nice_side.replace('-', '+');
-            }
 
             return nice_side;
 
