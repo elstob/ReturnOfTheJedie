@@ -46,8 +46,9 @@ new Vue({
         average_roll: function() {
 
             var parsed;
+            var parsed_rolls = [];
             var totals = {};
-            var average = {};
+            var averages = {};
 
             this.rolls.forEach(roll => {
 
@@ -61,17 +62,42 @@ new Vue({
                     }
                 })
 
+                parsed_rolls.push(parsed);
+
             });
 
             Object.keys(totals).forEach(side => {
-                average[side] = (totals[side] / this.rolls.length).toFixed(3);
+
+                var mean, values, square_diffs, avg_square_diffs, std_dev;
+
+                averages[side] = {};
+                mean = (totals[side] / this.rolls.length).toFixed(3);
+
+                // Calculate Population Stand Deviation
+                values = parsed_rolls.map(roll => (roll[side] || 0));
+                square_diffs = values.map(value => {
+                    var diff = value - mean;
+                    var sqr_diff = diff * diff;
+                    return sqr_diff;
+                });
+
+                avg_square_diffs = square_diffs.reduce((sum, value) => (sum + value), 0) / this.rolls.length;
+
+                std_dev = Math.sqrt(avg_square_diffs).toFixed(3);
+
+                averages[side]['mean'] = mean;
+                averages[side]['sd'] = std_dev;
+
             });
 
+            Object.keys(averages).forEach(side => {
+                averages[side]['max'] = Math.max(...parsed_rolls.map(roll => roll[side]).filter(n => (n !== undefined)));
+            });
 
             // Sort for consistency
-            average = Object.keys(average).sort().reduce((r, k) => (r[k] = average[k], r), {});
+            averages = Object.keys(averages).sort().reduce((r, k) => (r[k] = averages[k], r), {});
 
-            return average;
+            return averages;
 
         },
 

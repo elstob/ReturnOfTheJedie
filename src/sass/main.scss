@@ -212,11 +212,7 @@ table {
     }
 
     &.data {
-
-        td {
-            width: 50%;
-        }
-
+        table-layout: fixed;
     }
 
 }

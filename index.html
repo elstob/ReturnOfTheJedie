@@ -32,10 +32,12 @@
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <th>Name</th>
-                            <th>Text</th>
-                            <th class="side" colspan="6">Sides</th>
-                            <th class="action" colspan="2">Actions</th>
+                            <tr>
+                                <th>Name</th>
+                                <th>Text</th>
+                                <th class="side" colspan="6">Sides</th>
+                                <th class="action" colspan="2">Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                           <tr v-for="(card, slot) in active_cards">
@@ -72,10 +74,18 @@
                     <h3>Last Roll ({{this.rolls[this.rolls.length - 1].length}} dice)</h3>
                     <div class="table-wrapper">
                         <table class="data">
-                            <tr v-for="(value, key) in last_roll">
-                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
-                                <td>{{ value }}</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Side</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(value, key) in last_roll">
+                                    <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -84,10 +94,22 @@
                     <h3>Average</h3>
                     <div class="table-wrapper">
                         <table class="data">
-                            <tr v-for="(value, key) in average_roll">
-                                <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
-                                <td>{{ value }}</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Side</th>
+                                    <th>Mean</th>
+                                    <th>Max</th>
+                                    <th>Standard Deviation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(averages, key) in average_roll">
+                                    <td><span v-html="icon(key)"></span> <template v-if="key.includes('Special')"> {{ key }}</template></td>
+                                    <td>{{ averages.mean }}</td>
+                                    <td>{{ averages.max }}</td>
+                                    <td>{{ averages.sd }}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
