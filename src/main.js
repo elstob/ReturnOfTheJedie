@@ -24,7 +24,8 @@ new Vue({
         },
         active_cards: [],
         rolls: [],
-        sorted_faces: Object.keys(FACES).sort((a, b) => { return a.length - b.length })
+        sorted_faces: Object.keys(FACES).sort((a, b) => { return a.length - b.length }),
+        show_permutations: false
     },
     beforeMount: function() {
 
@@ -42,6 +43,32 @@ new Vue({
 
     },
     computed: {
+
+        permutations: function() {
+
+            var all_permutations, totaled_permutations, collated_permutations;
+            var cards = [];
+
+            this.active_cards.forEach(card => {
+
+                cards.push(card);
+
+                if (card.is_elite) {
+                    cards.push(card);
+                }
+
+            });
+
+            all_permutations = this.getParsedPermutations(cards);
+            totaled_permutations = all_permutations.map(permutation => this.totalRoll(permutation));
+            collated_permutations = this.collatePermutations(totaled_permutations);
+
+            // Sort collated permutations by probability (descending)
+            collated_permutations.sort((a, b) => (b.probability - a.probability));
+
+            return collated_permutations;
+
+        },
 
         average_roll: function() {
 
@@ -182,6 +209,10 @@ new Vue({
             } else {
                 card.is_elite = false;
             }
+
+            // Hack to trigger reactivity on active_cards
+            // #TODO: Work out how to make this smarter
+            this.active_cards = this.active_cards.slice();
 
         },
 
@@ -345,6 +376,10 @@ new Vue({
 
             text = FACES[key];
 
+            if (!text) {
+                return key;
+            }
+
             icon = 'icon-'+text.replace(' ', '-').toLowerCase();
 
             return `<span class="icon ${icon}" title="${text}"></span>`;
@@ -368,6 +403,105 @@ new Vue({
             return nice_side;
 
         },
+
+        getParsedPermutations: function(cards) {
+
+            var all_permutations = [];
+
+            // For each die
+            cards.forEach(card => {
+
+                var new_permutations = [];
+                var die = card.sides;
+
+                if (all_permutations.length === 0) {
+
+                    die.forEach(side => {
+                        new_permutations.push([this.parseSide(side, card)]);
+                    });
+
+                } else {
+
+                    all_permutations.forEach(permutation => {
+
+                        die.forEach(side => {
+                            var new_permutation = permutation.slice();
+                            var parsed_side = this.parseSide(side, card);
+                            new_permutation.push(parsed_side);
+                            new_permutations.push(new_permutation);
+                        });
+
+                    });
+
+                }
+
+                all_permutations = new_permutations;
+
+            });
+
+            return all_permutations;
+
+        },
+
+        collatePermutations: function(permutations) {
+
+            var hashed_permutations = {};
+            var collated_permutations = [];
+            var total_permutations = permutations.length;
+
+            var sorted_permutations = permutations.map(permutation => {
+
+                var ordered = {};
+                Object.keys(permutation).sort().forEach(key => {
+                    ordered[key] = permutation[key];
+                });
+
+                return ordered;
+
+            });
+
+            sorted_permutations.forEach(permutation => {
+
+                var hash = JSON.stringify(permutation);
+
+                if (!hashed_permutations[hash]) {
+                    hashed_permutations[hash] = 1;
+                } else {
+                    hashed_permutations[hash] = hashed_permutations[hash] + 1;
+                }
+
+            });
+
+            collated_permutations = Object.keys(hashed_permutations).map(hash => {
+                var result = {};
+                var count = hashed_permutations[hash];
+                result['result'] = JSON.parse(hash);
+                result['count'] = count;
+                result['probability'] = (count / total_permutations).toFixed(3);
+                result['percentage'] = ((count / total_permutations) * 100).toFixed(3);
+
+                if (Object.keys(result['result']).length === 0) {
+                    result['result'] = {
+                        'Unresolvable (e.g. only modified dice)': 0
+                    }
+                }
+
+                return result;
+            });
+
+            return collated_permutations;
+
+        },
+
+        togglePermutations: function() {
+
+            if (this.show_permutations) {
+                this.show_permutations = false;
+            } else {
+                this.show_permutations = true;
+            }
+
+        }
 
     }
 })
