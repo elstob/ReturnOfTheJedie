@@ -226,17 +226,16 @@ new Vue({
                 return result;
             }
 
-            // Handle blanks and modified
-            if (side.includes('-')) {
+            // Handle blanks
+            if (side === '-') {
+                result['-'] = { value: 1, faction_name: faction };
+                return result;
+            }
 
-                if (side === '-') {
-                    result['-'] = { value: 1, faction_name: faction };
-                    return result;
-                }
-
+            // Handle modified
+            if (side.includes('+')) {
                 side = side.substring(1);
                 modified = true;
-
             }
 
             possibilities.forEach(face => {
@@ -359,11 +358,6 @@ new Vue({
             this.sorted_faces.forEach(face => {
                 matched = false;
                 if (side.includes(face) && !matched) {
-
-                    if (side !== '-' && side[0] === '-') {
-                        // Fix modifiers
-                        side = side.replace('-', '+');
-                    }
 
                     nice_side = side.replace(face, this.icon(face));
                     matched = true;
