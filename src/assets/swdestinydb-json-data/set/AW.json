@@ -325,6 +325,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01010",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01010.png",
       "label":"Darth Vader"
    },
    {
@@ -650,6 +651,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01020",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01020.png",
       "label":"Jabba the Hutt"
    },
    {
@@ -811,6 +813,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01025",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01025.png",
       "label":"Gaffi Stick"
    },
    {
@@ -830,8 +833,8 @@
       "subtype_name":"Ability",
       "faction_code":"yellow",
       "faction_name":"Rogue",
-      "affiliation_code":"neutral",
-      "affiliation_name":"Neutral",
+      "affiliation_code":"villain",
+      "affiliation_name":"Villain",
       "rarity_code":"R",
       "rarity_name":"Rare",
       "position":26,
@@ -843,6 +846,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01026",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01026.png",
       "label":"On the Hunt"
    },
    {
@@ -1497,6 +1501,7 @@
       "is_unique":true,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01046",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01046.png",
       "label":"Han Solo"
    },
    {
@@ -1658,6 +1663,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01051",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01051.png",
       "label":"DL-44 Heavy Blaster Pistol"
    },
    {
@@ -2051,6 +2057,38 @@
    },
    {
       "sides":[
+         "+2RD",
+         "2F",
+         "2Sh",
+         "1R",
+         "Sp",
+         "-"
+      ],
+      "set_code":"AW",
+      "set_name":"Awakenings",
+      "type_code":"support",
+      "type_name":"Support",
+      "subtype_code":"ability",
+      "subtype_name":"Ability",
+      "faction_code":"yellow",
+      "faction_name":"Rogue",
+      "affiliation_code":"neutral",
+      "affiliation_name":"Neutral",
+      "rarity_code":"R",
+      "rarity_name":"Rare",
+      "position":64,
+      "code":"01064",
+      "name":"Black Market",
+      "cost":3,
+      "text":"[special] - Draw 2 cards. You may play an upgrade from your hand, decreasing its cost by 1.",
+      "deck_limit":2,
+      "is_unique":false,
+      "has_die":true,
+      "url":"http:\/\/swdestinydb.com\/card\/01064",
+      "label":"Black Market"
+   },
+   {
+      "sides":[
          "1F",
          "1Dr",
          "1Dc",
@@ -2079,6 +2117,7 @@
       "is_unique":false,
       "has_die":true,
       "url":"http:\/\/swdestinydb.com\/card\/01065",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01065.png",
       "label":"Cunning"
    },
    {
@@ -2801,6 +2840,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01096",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01096.png",
       "label":"Go for the Kill"
    },
    {
@@ -2890,6 +2930,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01100",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01100.png",
       "label":"My Kind of Scum"
    },
    {
@@ -3495,6 +3536,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01128",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01128.png",
       "label":"Draw Attention"
    },
    {
@@ -3517,6 +3559,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01129",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01129.png",
       "label":"Hyperspace Jump"
    },
    {
@@ -3651,6 +3694,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01135",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01135.png",
       "label":"Play the Odds"
    },
    {
@@ -3697,6 +3741,7 @@
       "is_unique":false,
       "has_die":false,
       "url":"http:\/\/swdestinydb.com\/card\/01137",
+      "imagesrc":"http:\/\/s3.amazonaws.com\/swdestinydb-prod\/01137.png",
       "label":"Second Chance"
    },
    {
