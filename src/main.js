@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import awakenings from './assets/swdestinydb-json-data/set/AW.json'
+import sor from './assets/swdestinydb-json-data/set/SoR.json'
 import styles from './sass/main.scss'
 
 var FACES = {
@@ -20,7 +21,8 @@ new Vue({
     data: {
         selected_card: '01001',
         sets: {
-            Awakenings: awakenings
+            Awakenings: awakenings,
+            [`Spirit of Rebellion`]: sor
         },
         active_cards: [],
         rolls: [],
