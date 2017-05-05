@@ -15,6 +15,13 @@ var FACES = {
     '-':  'Blank'
 };
 
+var FACTIONS = {
+  'red': 'Command',
+  'blue': 'Force',
+  'yellow': 'Rogue',
+  'gray': 'General'
+}
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
@@ -144,10 +151,13 @@ new Vue({
 
             this.rolls = [];
 
+
             while (!chosen) {
 
                 Object.keys(this.sets).forEach(set => {
-                    chosen = this.sets[set].find(card => card.code === this.selected_card);
+                    if (!chosen) {
+                      chosen = this.sets[set].find(card => card.code === this.selected_card);
+                    }
                 });
 
                 if (!chosen) {
@@ -251,7 +261,7 @@ new Vue({
             var breakdown, value, modified, found;
             var result = {};
             var possibilities = ['MD', 'RD', 'Sh', 'R', 'Dr', 'Dc', 'F'];
-            var faction = card.faction_name.toString();
+            var faction = FACTIONS[card.faction_code].toString();
 
             // Handle Specials
             if (side.includes('Sp')) {
